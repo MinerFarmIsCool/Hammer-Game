@@ -17,12 +17,12 @@ def main():
     player_sprite = game.init_sprite_groups()
 
     while gaming_running:
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 raise SystemExit
         
-
         game.screen.fill("white")
 
         player_sprite.draw(game.screen)
