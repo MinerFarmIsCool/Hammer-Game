@@ -15,7 +15,9 @@ class Game():
         self.FPS = 60
 
         self.player = game_classes.Player(150, 150, 50, 50)
+        self.game_level = level.Level()
 
     def init_sprite_groups(self):
         player_sprite = pygame.sprite.Group(self.player)
-        return player_sprite
+        enemy_sprite = pygame.sprite.Group(self.game_level.little_fuck_stupid)
+        return player_sprite, enemy_sprite
