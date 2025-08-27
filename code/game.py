@@ -14,7 +14,7 @@ class Game():
         self.clock = pygame.time.Clock()
         self.FPS = 60
 
-        self.player = game_classes.Player(150, 150, 50, 50)
+        self.player = game_classes.Player(450, 450, 100, 100)
         self.game_level = level.Level()
 
     def init_sprite_groups(self):

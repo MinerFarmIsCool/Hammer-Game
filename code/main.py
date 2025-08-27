@@ -10,7 +10,7 @@ from game import Game
 
 pygame.init()
 
-def main():
+def game_loop():
     game = Game()
 
     gaming_running = True
@@ -28,6 +28,11 @@ def main():
         game_classes.Player.movement_update(game.player)
         game.game_level.little_fuck_stupid.movement(game.player)
         
+        if pygame.Rect.colliderect(game.player.rect, game.game_level.little_fuck_stupid.rect):
+            game.player.die()
+
+
+
         #Drawing stuff
         game.screen.fill("purple")
 
@@ -38,4 +43,4 @@ def main():
         game.clock.tick(game.FPS)
 
 if __name__ == "__main__":
-    main()
+    game_loop()

@@ -16,6 +16,11 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.image.load("assets/the gurt.png")
         self.image = pygame.transform.scale(self.image, (width, height))
         self.rect = self.image.get_rect(topleft=(x, y))
+        self._stats = {
+            "health": 10,
+            "attack": 5,
+            "defense": 2
+        }
         
     def movement_update(self):
         keys = pygame.key.get_pressed()
@@ -34,6 +39,13 @@ class Player(pygame.sprite.Sprite):
     
     def get_pos(self):
         return self.rect.x, self.rect.y
+    
+    def get_stats(self):
+        return self._stats
+    
+    def die(self):
+        pygame.quit()
+        sys.exit()
     
 
 class Enemy(pygame.sprite.Sprite):
