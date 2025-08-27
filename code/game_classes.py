@@ -46,6 +46,18 @@ class Player(pygame.sprite.Sprite):
     def die(self):
         pygame.quit()
         sys.exit()
+
+    def get_hit(self, enemy):
+        enemy_stats = enemy.get_stats()
+        damage = enemy_stats["attack"] - self._stats["defense"]
+        self._stats["health"] -= damage
+        return self._stats["health"]
+    
+    def attack(self, enemy):
+        enemy_stats = enemy.get_stats()
+        damage = self._stats["attack"] - enemy_stats["defense"]
+        enemy_stats["health"] -= damage
+        return enemy_stats["health"]
     
 
 class Enemy(pygame.sprite.Sprite):
@@ -56,6 +68,11 @@ class Enemy(pygame.sprite.Sprite):
         self.image = pygame.image.load("assets/Hammer Game Enemy Basic.png")
         self.image = pygame.transform.scale(self.image, (width, height))
         self.rect = self.image.get_rect(topleft=(x, y))
+        self._stats = {
+            "health": 5,
+            "attack": 5,
+            "defense": 1
+        }
 
     def movement(self, player):
 
@@ -74,4 +91,7 @@ class Enemy(pygame.sprite.Sprite):
                 self.rect.y += self.speed
 
         return self.rect.x, self.rect.y
+    
+    def get_stats(self):
+        return self._stats
         

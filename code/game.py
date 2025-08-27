@@ -13,9 +13,11 @@ class Game():
         self.screen = pygame.display.set_mode((1280, 720))
         self.clock = pygame.time.Clock()
         self.FPS = 60
+        self.frame_count = 0
 
         self.player = game_classes.Player(450, 450, 100, 100)
         self.game_level = level.Level()
+
 
     def init_sprite_groups(self):
         player_sprite = pygame.sprite.Group(self.player)
