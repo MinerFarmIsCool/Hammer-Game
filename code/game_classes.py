@@ -95,3 +95,6 @@ class Enemy(pygame.sprite.Sprite):
     def get_stats(self):
         return self._stats
         
+class Weapons():
+    def __init__(self):
+        pass
